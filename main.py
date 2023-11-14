@@ -1,13 +1,14 @@
 import sys
+import random
 
-from PyQt6 import uic
 from PyQt6.QtWidgets import QApplication, QMainWindow
+from UI import Ui_MainWindow
 
 
-class ART(QMainWindow):
+class ART(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi("UI.ui", self)
+        self.setupUi(self)
         self.art_drawed = False
         self.init_ui()
 
@@ -16,7 +17,8 @@ class ART(QMainWindow):
 
     def draw(self):
         if not self.art_drawed:
-            self.art.setText("DRAWING")
+            self.art.setText(
+                f"DRAWING; random color: {random.randint(0, 255)}, {random.randint(0, 255)}, {random.randint(0, 255)}")
             self.art_drawed = True
 
 
